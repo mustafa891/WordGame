@@ -275,7 +275,7 @@ function checkWord() {
 
     function toStr(array) {
         if (array == undefined) return;
-        return array.toString()
+        return array.String()
             .replaceAll(",", "");
     }
 }
