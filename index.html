@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Game</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/fontawsome.js"></script>
+</head>
+
+<body class="bg-gradient-dark">
+
+    <header class="p-5 d-flex justify-content-between">
+        <h1 class="text-white">Word Game</h1>
+
+        <div class="info">
+            <span id="time">00:00</span> <br>
+            <span id="score">0</span>
+        </div>
+    </header>
+
+    <!-- Main -->
+
+    <main class="p-6 text-center">
+
+        <!-- Menu -->
+        <div class="menu text-center">
+            <button id="start" class="btn btn-primary">START GAME</button>
+        </div>
+        <!--End Menu -->
+
+        <div class="game d-none">
+            <span class="text-white" id="correct"></span>
+            <div class="inputs">
+                <input type="text" maxlength="1" id="input_0">
+                <input type="text" maxlength="1" id="input_1">
+                <input type="text" maxlength="1" id="input_2">
+                <input type="text" maxlength="1" id="input_3">
+            </div>
+
+            <div class="characters pt-5">
+                <button class="btn btn-outline-white">w</button>
+                <button class="btn btn-outline-white">o</button>
+                <button class="btn btn-outline-white">r</button>
+                <button class="btn btn-outline-white">d</button>
+            </div>
+            <br>
+            <button class="btn btn-secondary btn-sm" id="delete">Delete</button>
+
+        </div>
+
+    </main>
+
+    <!-- End Main -->
+
+    <!-- Footer -->
+    <footer class="text-center">
+
+        <div class="position-absolute m-auto top-0 bottom-0" style="display: inherit;">
+
+            <div class="github">
+                <i class="fa-brands fa-github"></i>
+            </div>
+            <div class="facebook">
+                <i class="fa-brands fa-facebook"></i>
+            </div>
+            <div class="mail">
+                <i class="fa-solid fa-at"></i>
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <strong class="text-white">create by mustafa with <font class="text-danger"> ❤</font></strong>
+
+    </footer>
+    <!-- End Footer -->
+
+    <script type="module" src="assets/js/app.js"></script>
+
+</body>
+
+</html>

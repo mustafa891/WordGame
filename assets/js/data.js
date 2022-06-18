@@ -1,0 +1,1 @@
+export const words = ["government", "company", "number", "problem", "group", "different", "important", "young", "public", "about", "would", "project", "education", "healthy", "honest", "development"]

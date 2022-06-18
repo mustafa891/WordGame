@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Game</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/fontawsome.js"></script>
+</head>
+<body class="bg-gradient-dark">
+
+    <header class="p-5">
+        <h1 class="text-white">Word Game</h1> <br> 
+        <h3 class="text-white">Result : </h3>
+    </header>
+
+    <!-- Main -->
+
+    <main class="p-4 text-center">
+
+        <strong class="text-white" id="text"></strong>
+        <br>
+        <br>
+        <strong class="text-white"><span class="text-success">Thanks</span>, 🙏 you try my game</strong>
+
+    </main>
+
+    <!-- End Main -->
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="github">
+            <i class="fa-brands fa-github"></i>
+        </div>
+        <div class="facebook">
+            <i class="fa-brands fa-facebook"></i>
+        </div>
+        <div class="mail">
+            <i class="fa-solid fa-at"></i>
+        </div>
+
+        <strong class="text-white">create by mustafa with <font class="text-danger"> ❤</font></strong>
+    </footer>
+    <!-- End Footer -->
+
+
+    <script>
+
+        let data = JSON.parse(localStorage.getItem("data"));
+
+        document.getElementById("text").textContent = `You correct ${data['score']} words in ${data['words']} in ${data['time']}`;
+
+    </script>
+
+    
+</body>
+</html>
