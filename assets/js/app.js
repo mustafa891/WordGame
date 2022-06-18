@@ -275,8 +275,9 @@ function checkWord() {
 
     function toStr(array) {
         if (array == undefined) return;
-        return array.toString()
-            .replaceAll(",", "");
+        // return array.toString()
+        //     .replaceAll(",", "");
+        return array;
     }
 }
 
