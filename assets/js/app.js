@@ -274,9 +274,12 @@ function checkWord() {
 
 
     function toStr(array) {
+        let text = "";
         if (array == undefined) return;
-        return array.toString()
-            .replaceAll(",", "");
+        for(var  ar of array) {
+            text += ar;
+        }
+        return ar;
     }
 }
 
