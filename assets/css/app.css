@@ -6,7 +6,7 @@ header h1 {
 footer div {
    width: 40px;
    height: 50px;
-   margin: 5px ;
+   margin: 5px;
    border-radius: 10px;
    cursor: pointer;
 }
@@ -27,7 +27,7 @@ footer .facebook {
 }
 
 
-.inputs input{
+.inputs input {
    background: transparent;
    outline: none;
    border: none;
@@ -49,6 +49,20 @@ footer .facebook {
    border-right: solid white 3px;
 }
 
- button {
-      margin: 10px 0 ;
- }
+button {
+   margin: 10px 0;
+}
+
+
+
+@media screen and (max-width:500px) {
+
+   .btn {
+      padding: 0.5rem 1rem;
+   }
+
+   h1 {
+      line-height: 50px;
+      font-size: 27px;
+   }
+}

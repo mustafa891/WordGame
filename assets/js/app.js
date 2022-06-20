@@ -2,14 +2,15 @@ import {
     words
 } from "./data.js";
 
-const startBtn = document.getElementById("start");
-const scoreDisplay = document.querySelector("#score");
-const correctDisplay = document.getElementById("correct");
+const startBtn = document.getElementById("start")
+const scoreDisplay = document.querySelector("#score")
+const correctDisplay = document.getElementById("correct")
 const timeDisplay = document.querySelector("#time")
 
 let inputs, charactersBtn;
 
-let shuffleWords, shuffleChars, wordIndex, score, inputIndex;
+let shuffleWords, shuffleChars, wordIndex, score;
+let inputIndex = 0;
 let selectedInput = [];
 let running = false;
 
@@ -25,7 +26,6 @@ function startGame() {
 
     wordIndex = 0;
     score = 0;
-    inputIndex = 0;
 
     displayWords();
 
@@ -36,7 +36,7 @@ function startGame() {
     timer()
     characters()
     Inputs()
-    selectInput();
+    selectInput()
     checkWord()
 }
 
@@ -48,16 +48,15 @@ function displayWords() {
 
     let currentWord;
 
+
     // if game end stop this 
     if (running && wordIndex != words.length) {
 
         currentWord = shuffleWords[wordIndex];
         shuffleChars = Array.from(currentWord).sort(() => Math.random() - 0.5);
-        shuffleChars = Array.from(currentWord).sort(() => Math.random() - 0.5);
-
 
         // if shuffleChars  == currentWord
-        if (currentWord == shuffleChars.toString().replaceAll(",", "")) {
+        if (currentWord == shuffleChars.join("")) {
             shuffleChars = Array.from(currentWord).sort(() => Math.random() - 0.5);
         }
 
@@ -77,54 +76,43 @@ function displayWords() {
 
 function characters() {
 
-    const deleteBtn = document.getElementById("delete")
-
     charactersBtn.forEach(char => {
         char.onclick = () => {
 
             if (inputIndex >= inputs.length) inputIndex = 0;
 
             if (selectedInput == "" && inputs[inputIndex] != undefined) {
-                inputs[inputIndex].setAttribute("last_value", char.getAttribute('value'));
-                let charValue = char.getAttribute("value");
-                inputs[inputIndex].value = charValue;
-                char.setAttribute("disabled", true);
-                inputIndex += 1;
-            } else {
 
+                inputs[inputIndex].setAttribute("last_value", char.getAttribute('value'));
+                inputs[inputIndex].value = char.getAttribute("value");
+
+            } else {
 
                 inputIndex = Array.from(inputs).indexOf(selectedInput);
                 selectedInput.value = char.getAttribute("value");
-                char.setAttribute("disabled", true);
                 selectedInput = "";
-                inputIndex += 1;
 
             }
-
+            char.setAttribute("disabled", true);
+            inputIndex += 1;
         }
     });
 
-
     // delete btn 
+    const deleteBtn = document.getElementById("delete")
 
-    let pressed = false;
-    deleteBtn.addEventListener("click", () => {
-        pressed = true;
-
-        if (inputIndex <= 0) return;
-        if (!pressed) return;
+    deleteBtn.onclick = () => {
+        if(inputIndex <= 0) return;
 
         inputIndex -= 1;
-        console.log(inputIndex);
-        let chars = Array.from(charactersBtn).filter((char) => {
-            if (char.getAttribute("value") == inputs[inputIndex].getAttribute("last_value")) {
+        inputs[inputIndex].value = "";
+        Array.from(charactersBtn).map((char) => {
+            if(char.getAttribute("value") == inputs[inputIndex].getAttribute("last_value")) {
                 char.removeAttribute("disabled");
             }
         });
-        inputs[inputIndex].value = "";
-        pressed = false;
 
-    });
+    }
 
 }
 
@@ -212,7 +200,6 @@ function Inputs() {
 function nextWord() {
     wordIndex += 1;
     inputIndex = 0;
-    console.log(wordIndex);
 
     displayWords();
 
@@ -240,8 +227,8 @@ function checkWord() {
 
     let id = setInterval(() => {
 
-        let answer = toStr(Array.from(inputs).map((input) => input.value))
-        const word = toStr(words[wordIndex]);
+        let answer = Array.from(inputs).map((input) => input.value).join("");
+        const word = Array.from(words[wordIndex]).join("");
 
         if (words.length == wordIndex) {
             gameEnd();
@@ -272,19 +259,9 @@ function checkWord() {
         });
     }
 
-
-    function toStr(array) {
-        let text = "";
-        if (array == undefined) return;
-        for(var  ar of array) {
-            text += ar;
-        }
-        return ar;
-    }
 }
 
 function timer() {
-
 
     let startTime = Date.now()
     let min, sec;
@@ -320,6 +297,4 @@ function gameEnd() {
 }
 
 // event
-
-
 startBtn.addEventListener("click", startGame);
